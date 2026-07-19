@@ -5,7 +5,7 @@
 | Milestone | State | Estimated turns | Exit evidence |
 | --- | --- | ---: | --- |
 | 形になるローカルMVP | completed | 1 turn（今回） | 純粋エンジン、Case A〜J、UI、共有、static build、E2E |
-| 公開alpha | live, release tag pending | 今回の1 turn | commit/push、GitHub Pages成功、公開URL desktop/mobile smoke、prerelease |
+| 公開alpha | completed | 今回の1 turn | commit/push、GitHub Pages成功、公開URL desktop/mobile smoke、prerelease |
 | 信頼できるpublic beta | planned | +3〜5 turns | 出典付きtiming preset、方向付きadapter UI、PD入力改善、a11y/performance/SEO監査、公開ケース |
 | 既存ユーティリティと競合できる内容量 | future | beta後 +10〜16 turns | 規格／能力catalog、代表構成ライブラリ、比較・report export、検索向け解説／ケース、実機校正、feedback/analytics/運用 |
 

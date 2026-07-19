@@ -4,9 +4,9 @@
 
 「その映像・給電経路は、買う前に成立するか。」を、version labelやconnector形状から推測せず、区間ごとの既知能力・不明能力・方向性から説明可能に判定する。
 
-## Current slice — public alpha live, tag pending
+## Current slice — v0.1.0-alpha.1 released
 
-`v0.1.0-alpha.1` の公開契約を実装し、GitHub Pagesへ配備済み。単一映像ストリームの線形チェーン、四状態判定、DP / USB-C DP Alt Mode / HDMI TMDS、FRL unresolved、DSC/HDR/VRR、簡易USB PD、URL hash、portable report、Issue導線を含む。exact release tagとprereleaseを残す段階。
+`v0.1.0-alpha.1` の公開契約を実装し、GitHub Pagesへ配備、exact tagとGitHub prereleaseまで公開済み。単一映像ストリームの線形チェーン、四状態判定、DP / USB-C DP Alt Mode / HDMI TMDS、FRL unresolved、DSC/HDR/VRR、簡易USB PD、URL hash、portable report、Issue導線を含む。
 
 ## Acceptance edge
 
@@ -41,16 +41,18 @@
 - Local gates: frozen forced install、peer問題なし、typecheck 0/0/0、lint成功、unit 35/35
 - Coverage: statement 88.69%、branch 77.95%、function 95.45%、line 89.61%
 - Static production build成功、Chromium desktop/mobile E2E 16/16成功
-- GitHub Actions run 29676892611 attempt 2: build/deploy green
+- Exact app/release commit: `d74b81741a15762e79ad08187fad9b736acdb323`
+- GitHub Actions final run 29677035609: build/deploy green
 - Public URL: `https://yushimoji.github.io/Signal-Chain-Preflight/` 200、主要asset 200、unknown path 404
 - Public URLへ向けたChromium desktop/mobile E2E 16/16成功。version/commit、FRL、Unknown、share、report、404を確認
+- Annotated tag / prerelease: `v0.1.0-alpha.1` / `https://github.com/YuShimoji/Signal-Chain-Preflight/releases/tag/v0.1.0-alpha.1`
 - GitHub公式action内部のNode.js 20 deprecation annotationは非失敗警告。公式公開workflowのmajor更新時に追従する
 
 ## Residual work
 
 | Purpose | Effect | Requirements | State | Owner | Next move |
 | --- | --- | --- | --- | --- | --- |
-| 公開αのrelease固定 | 検証済み公開artifactをversionへ結び付ける | final app commit、Actions/live再確認、tag/prerelease | live・tag pending | release engineering | exact SHAへtagを作成しreleaseを公開 |
+| Actions runtime annotation追従 | 将来のrunner互換性を維持する | GitHub公式Pages actionのNode 24対応major | non-blocking warning | dependency maintenance | 公式docs更新時にmajorを上げCI確認 |
 | 出典付きtiming preset | pixel clock入力負荷と誤入力を減らす | CTA/VESA公開根拠、schema、照合test | 未着手 | product/engineering | 少数の一次資料付きpresetから開始 |
 | HDMI FRL精密payload | HDMI高帯域経路を確定診断する | FEC/packet overheadを含む公開一次根拠 | unresolvedとして安全に隔離 | standards research | 公開根拠を得るまでexact値を追加しない |
 | 異種transport変換UI | DP→HDMI等の有向adapterをUIで組める | edge transport編集、adapter入出力、組合せE2E | engine/goldenのみ、UIは同一transport中心 | engineering | 次のvertical sliceで方向付きadapter cardを追加 |
@@ -60,5 +62,5 @@
 
 1. `git status --short --branch` と `docs/release-checklist.md` を読む。
 2. `pnpm install --frozen-lockfile` からquality gateを再実行する。
-3. 未完了ならActions/Pages/live smokeをexact SHAへ結び付ける。
-4. 公開完了後の次sliceは出典付きtiming presetと方向付きadapter UI。
+3. 公開状態を再監査する場合はtag `v0.1.0-alpha.1` とPages表示commit `d74b817` を照合する。
+4. 次sliceは出典付きtiming presetと方向付きadapter UI。
