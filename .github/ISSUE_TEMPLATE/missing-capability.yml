@@ -1,0 +1,41 @@
+name: 能力・方式が不足している
+description: 未収録のリンクモード、機能、給電条件などを提案します
+title: "[Capability] "
+labels: ["missing-capability"]
+body:
+  - type: input
+    id: capability
+    attributes:
+      label: 不足している能力・方式
+    validations:
+      required: true
+  - type: textarea
+    id: use-case
+    attributes:
+      label: 必要になる構成とユーザー価値
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: 公開一次資料
+      description: 正確な定数・条件・方向を確認できる公式URLを記載してください。
+    validations:
+      required: true
+  - type: dropdown
+    id: current-scope
+    attributes:
+      label: 現在のα範囲との関係
+      options:
+        - 現在の対応範囲に含まれる
+        - 現在の非対応範囲に含まれる
+        - 分からない
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: 共有前確認
+      options:
+        - label: 個人情報、ローカルパス、秘密情報を含めていません
+          required: true

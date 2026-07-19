@@ -1,0 +1,59 @@
+name: 判定結果が正しくない
+description: 期待と異なるEXACT_PASS / CONDITIONAL_PASS / FAIL / INDETERMINATEを報告します
+title: "[Verdict] "
+labels: ["incorrect-verdict"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        レポートJSONには入力した機器名が含まれます。個人情報、ローカルパス、秘密情報を削除してから貼り付けてください。
+  - type: textarea
+    id: report
+    attributes:
+      label: 診断レポートJSON
+      description: アプリの「レポートJSONをコピー」から取得してください。長すぎる場合は添付してください。
+      render: json
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: 実際の判定
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期待する判定と理由
+    validations:
+      required: true
+  - type: textarea
+    id: chain
+    attributes:
+      label: 信号チェーン
+      description: source → cable → dock/adapter → cable → sinkの順序と方向を書いてください。
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: 一次資料
+      description: メーカー仕様、VESA、HDMI LA、USB-IFなど、主張を確認できるURLを記載してください。
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: OS・driver・firmwareと再現手順
+      description: 判定モデルの外部要因と、同じ入力を再現する手順を分けて記載してください。
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: 共有前確認
+      options:
+        - label: 個人情報、ローカルパス、秘密情報を削除しました
+          required: true
+        - label: このα版は実機適合や製品保証を行わないことを理解しました
+          required: true

@@ -1,0 +1,56 @@
+---
+import { PreflightApp } from '../components/PreflightApp';
+import { APP_VERSION, BUILD_PROVENANCE, shortCommit } from '../release/provenance';
+import '../styles/global.css';
+
+const canonicalUrl = new URL(`${import.meta.env.BASE_URL}/`.replace('//', '/'), Astro.site);
+const faviconUrl = `${import.meta.env.BASE_URL}/favicon.svg`.replace('//', '/');
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="PC・ドック・ケーブル・モニターの映像帯域、DSC、HDR、VRR、USB PDを区間ごとに診断します。" />
+    <meta name="theme-color" content="#08101c" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href={faviconUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:title" content="Signal Chain Preflight｜映像・給電経路の購入前診断" />
+    <meta property="og:description" content="端子名から推測せず、単一映像経路の既知能力・不明能力・ボトルネックを説明可能に診断します。" />
+    <meta property="og:url" content={canonicalUrl} />
+    <title>Signal Chain Preflight｜映像・給電経路の購入前診断</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href={`${import.meta.env.BASE_URL}/`.replace('//', '/')}><span class="brand-mark" aria-hidden="true">SC</span><span><strong>Signal Chain</strong><small>Preflight</small></span></a>
+      <nav aria-label="ページ内ナビゲーション"><a href="#builder-title">診断する</a><a href="#diagnosis-result">結果</a><a href="#about">このツールについて</a></nav>
+    </header>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">v{APP_VERSION} / PUBLIC ALPHA</span>
+        <h1>その映像・給電経路は、<em>買う前に成立するか。</em></h1>
+        <p>端子が刺さることと、信号が通ることは別問題です。ソースからディスプレイまで、帯域・レーン・DSC・HDR・VRR・給電を区間ごとに確認します。</p>
+        <div class="hero-points"><span>推測しない</span><span>Unknownを残す</span><span>根拠を追える</span></div>
+      </div>
+      <div class="hero-diagram" aria-label="ソースからケーブル、ドック、ディスプレイへの信号経路図">
+        <div><span>01</span><strong>SOURCE</strong><small>能力を明示</small></div><i>→</i><div><span>02</span><strong>DOCK</strong><small>最初の制約</small></div><i>→</i><div><span>03</span><strong>SINK</strong><small>機能を継続</small></div>
+      </div>
+    </section>
+    <section class="release-envelope" aria-labelledby="release-envelope-title">
+      <div class="envelope-heading"><span class="eyebrow">ALPHA SUPPORT CONTRACT</span><h2 id="release-envelope-title">分かる範囲だけを、確定して返します。</h2><p>この版は購入前の一次診断です。実機適合や製品型番単位の保証ではありません。</p></div>
+      <div class="envelope-grid">
+        <div><h3>対応する診断</h3><ul><li>DisplayPort HBR2 / HBR3 / UHBR</li><li>USB-C DisplayPort Alt Mode</li><li>HDMI TMDS 18 Gbps</li><li>簡易USB Power Delivery</li></ul></div>
+        <div><h3>このα版では非対応</h3><ul><li>HDMI FRLの精密payload</li><li>USB4 / Thunderbolt、MST / 複数画面</li><li>HDCP / eARC、OS / driver</li><li>ケーブル長・物理品質・製品型番の保証</li></ul></div>
+        <div class="frl-contract"><h3>HDMI判定の境界</h3><p>既知のTMDS能力が不足すれば <strong>FAIL</strong>。FRLが必要でも精密判定できない場合は <strong>INDETERMINATE</strong>。別transport案を示しても元の判定は変えません。</p></div>
+      </div>
+    </section>
+    <PreflightApp client:load />
+    <footer id="about">
+      <div><strong>Signal Chain Preflight v{APP_VERSION}</strong><p>診断はブラウザ内だけで実行され、外部APIへ入力を送信しません。</p><small>schema 1 / commit {shortCommit(BUILD_PROVENANCE.buildCommit)} / build {BUILD_PROVENANCE.buildDate} / {BUILD_PROVENANCE.environment}</small></div>
+      <p>実機相互接続、信号品質、OS・ドライバー、個別USB PD交渉の保証ではありません。<br /><a href="https://github.com/YuShimoji/Signal-Chain-Preflight/issues">不具合・不足能力を報告する ↗</a></p>
+    </footer>
+  </body>
+</html>

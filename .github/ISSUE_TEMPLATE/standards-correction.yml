@@ -1,0 +1,39 @@
+name: 規格値・出典の訂正
+description: 定数、式、規格の解釈、公開出典の訂正を提案します
+title: "[Standards] "
+labels: ["standards-correction"]
+body:
+  - type: input
+    id: affected-rule
+    attributes:
+      label: 対象の定数・判定規則・source ID
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: 現在の実装または記述
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: 訂正案と判定への影響
+    validations:
+      required: true
+  - type: textarea
+    id: primary-sources
+    attributes:
+      label: 公開一次資料
+      description: 発行主体、文書名、revision、該当箇所、URLを記載してください。二次記事だけでは確定値を変更しません。
+    validations:
+      required: true
+  - type: checkboxes
+    id: evidence
+    attributes:
+      label: 証拠境界
+      options:
+        - label: raw帯域と実効映像payloadを区別しています
+          required: true
+        - label: 規格version名だけから能力を推測していません
+          required: true

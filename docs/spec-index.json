@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-07-19",
+  "documents": [
+    { "path": "docs/project-context.md", "role": "cockpit" },
+    { "path": "docs/product-brief.md", "role": "product-scope" },
+    { "path": "docs/domain-model.md", "role": "domain-authority" },
+    { "path": "docs/standards-sources.md", "role": "standards-evidence" },
+    { "path": "docs/assumptions.md", "role": "evidence-boundary" },
+    { "path": "docs/decision-log.md", "role": "decision-ledger" },
+    { "path": "docs/idea-ledger.md", "role": "idea-ledger" },
+    { "path": "docs/roadmap.md", "role": "delivery-roadmap" },
+    { "path": "docs/known-limitations.md", "role": "public-support-envelope" },
+    { "path": "docs/golden-cases.md", "role": "acceptance-cases" },
+    { "path": "docs/release-checklist.md", "role": "release-gate" },
+    { "path": "docs/releases/v0.1.0-alpha.1.md", "role": "release-notes" }
+  ]
+}

@@ -1,0 +1,36 @@
+name: UI・アクセシビリティの問題
+description: 操作、表示、モバイル、キーボード、支援技術の問題を報告します
+title: "[UI/A11y] "
+labels: ["ui", "accessibility"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 問題と影響
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 再現手順
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser・OS・画面幅・支援技術
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期待する挙動
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: 共有前確認
+      options:
+        - label: 画像とレポートから個人情報を削除しました
+          required: true
