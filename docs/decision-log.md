@@ -12,3 +12,4 @@
 | 2026-07-19 | v0.1.0-alpha.1の対応範囲をUI・README・reportに固定する | 公開後にFRL未対応や実機保証をEXACT_PASSと誤解させない | FRL精密payloadを一次根拠付きで実装した時 |
 | 2026-07-19 | portable reportへversion/schema/commit/buildを含める | Issueの観測をexact buildと入力・proofへ結び付ける | report schemaをversion upする時 |
 | 2026-07-19 | CUSTOM timingへsoftware safety rangeと桁警告を置く | NaN/Infinity/負値を拒否し、単位誤りを判定前に見つける | 公式timing generatorを実装した時 |
+| 2026-07-19 | docs-only pushをPages workflowから除外する | exact tagのapp artifactをcloseout文書だけで再buildしない | docsが公開siteの入力になった時 |

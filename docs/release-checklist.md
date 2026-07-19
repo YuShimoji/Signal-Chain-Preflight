@@ -1,6 +1,6 @@
 # Release checklist — v0.1.0-alpha.1
 
-状態: publication verification in progress（2026-07-19）
+状態: public alpha live / exact release tag pending（2026-07-19）
 
 ## Repository safety
 
@@ -30,12 +30,12 @@
 
 ## GitHub and public URL
 
-- [ ] `main`へcommit/push
-- [ ] Actions validation/deploy green
-- [ ] Pages URLが200、assetが200
-- [ ] desktop/mobileで診断、Unknown、FRL、hash roundtrip、report downloadを確認
-- [ ] console error、request failure、document overflowなし
-- [ ] canonical、OG、favicon、robots、sitemap、404を確認
+- [x] `main`へcommit/push
+- [x] Actions validation/deploy green（run 29676892611 attempt 2）
+- [x] Pages URLが200、assetが200
+- [x] desktop/mobileで診断、Unknown、FRL、hash roundtrip、report downloadを確認（live 16/16）
+- [x] console error、request failure、document overflowなし
+- [x] canonical、OG、favicon、robots、sitemap、404を確認
 - [ ] tag `v0.1.0-alpha.1` とGitHub prereleaseを公開
 
 未完了項目を完了扱いにせず、blockerがある場合はowner、必要設定、正確な再開手順を `docs/project-context.md` に残す。
