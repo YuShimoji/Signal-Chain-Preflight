@@ -13,3 +13,4 @@
 | 2026-07-19 | portable reportへversion/schema/commit/buildを含める | Issueの観測をexact buildと入力・proofへ結び付ける | report schemaをversion upする時 |
 | 2026-07-19 | CUSTOM timingへsoftware safety rangeと桁警告を置く | NaN/Infinity/負値を拒否し、単位誤りを判定前に見つける | 公式timing generatorを実装した時 |
 | 2026-07-19 | docs-only pushをPages workflowから除外する | exact tagのapp artifactをcloseout文書だけで再buildしない | docsが公開siteの入力になった時 |
+| 2026-07-21 | 再開用handoffはdocs-onlyでmainへ同期する | 別端末がchat履歴なしでrelease状態、残作業、次手順を復元できるようにする | handoff内容が実装変更や公開artifactに影響し始めた時 |

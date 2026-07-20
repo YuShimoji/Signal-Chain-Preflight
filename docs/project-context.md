@@ -48,6 +48,15 @@
 - Annotated tag / prerelease: `v0.1.0-alpha.1` / `https://github.com/YuShimoji/Signal-Chain-Preflight/releases/tag/v0.1.0-alpha.1`
 - GitHub公式action内部のNode.js 20 deprecation annotationは非失敗警告。公式公開workflowのmajor更新時に追従する
 
+## Sync handoff — 2026-07-21
+
+- Purpose: 別端末からの再開に必要なローカル/リモート同期状態と次手順を、chatではなくproject cockpitへ保持する
+- Effect: `main` と `origin/main` の一致、公開済みalpha artifact、残作業、最初に読むべきdocsを一箇所で復元できる
+- Requirements: repo-local `AGENTS.md`、`docs/project-context.md`、product/domain/standards/assumptions docsを先に読む。公開範囲、owner gate、secrets境界を広げない
+- State: `git fetch --prune origin` 後、`main` と `origin/main` は `e4066ed5ff9bebd3c7f4b02ecd97cca23dec2893` で一致。未追跡fileなし。tag `v0.1.0-alpha.1` はapp/release commit `d74b81741a15762e79ad08187fad9b736acdb323` を指す
+- Owner: engineering。FRL精密payload、実機妥当性、timing presetの一次資料判断はproduct/owner確認を伴う
+- Next move: 変更を始める前に `git status --short --branch`、`git rev-list --left-right --count origin/main...HEAD`、`pnpm install --frozen-lockfile`、`pnpm typecheck`、`pnpm lint` を再実行する
+
 ## Residual work
 
 | Purpose | Effect | Requirements | State | Owner | Next move |
