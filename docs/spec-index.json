@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-21",
+  "updatedAt": "2026-07-23",
   "documents": [
     { "path": "docs/project-context.md", "role": "cockpit" },
     { "path": "docs/product-brief.md", "role": "product-scope" },
@@ -10,6 +10,7 @@
     { "path": "docs/decision-log.md", "role": "decision-ledger" },
     { "path": "docs/idea-ledger.md", "role": "idea-ledger" },
     { "path": "docs/roadmap.md", "role": "delivery-roadmap" },
+    { "path": "docs/supervisor-handoff.md", "role": "supervisor-ai-handoff" },
     { "path": "docs/known-limitations.md", "role": "public-support-envelope" },
     { "path": "docs/golden-cases.md", "role": "acceptance-cases" },
     { "path": "docs/release-checklist.md", "role": "release-gate" },

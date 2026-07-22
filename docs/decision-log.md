@@ -14,3 +14,5 @@
 | 2026-07-19 | CUSTOM timingへsoftware safety rangeと桁警告を置く | NaN/Infinity/負値を拒否し、単位誤りを判定前に見つける | 公式timing generatorを実装した時 |
 | 2026-07-19 | docs-only pushをPages workflowから除外する | exact tagのapp artifactをcloseout文書だけで再buildしない | docsが公開siteの入力になった時 |
 | 2026-07-21 | 再開用handoffはdocs-onlyでmainへ同期する | 別端末がchat履歴なしでrelease状態、残作業、次手順を復元できるようにする | handoff内容が実装変更や公開artifactに影響し始めた時 |
+| 2026-07-23 | public betaの最初の縦断sliceを「出典付きtiming preset + 方向付きadapter UI」に固定する | 現行engineの決定論と有向adapter契約を保ったまま、誤入力とUI上の最大gapを同時に減らせる。HDMI 2.2 / USB4 / MSTを混ぜると証拠・topology・allocationの論点が拡散する | preset一次資料が利用不能、またはadapter UIの前提となるdomain変更が必要と判明した時 |
+| 2026-07-23 | HDMI 2.2、USB4 80Gbps、DP 2.1bはroadmap監視対象に留め、既存判定定数へ直ちに追加しない | 公式公開概要は将来範囲を示すが、区間payload、tunneling allocation、物理長の扱いを現行の線形link modeへ安全に写像する証拠とmodelが不足する | 公開可能な一次仕様、schema案、golden case、owner承認が揃った時 |

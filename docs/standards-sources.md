@@ -32,3 +32,12 @@
 - HDMI 2.2の64/80/96 Gbps系のリンク構成と実効payload。初版では選択肢・判定定数に入れない。
 - CTA-861の全タイミング表とVESA CVT-RB2の規格本文は公開概要だけでは完全再現できない。初版の自動推定は製品上の「概算」とし、厳密診断にはカスタムpixel clockを使う。
 - DP UHBRの公開77.37 Gbpsは最大payloadの概要値。個別FEC/transport overheadの規格本文レベル再現は将来の検証対象。
+
+## Roadmap source watch — checked 2026-07-23
+
+以下は将来範囲の存在を確認するための監視資料であり、現行の判定定数や `EXACT_PASS` の根拠には使わない。
+
+- HDMI Licensing Administrator, “HDMI 2.2 Specification Technology Overview”, https://www.hdmi.org/spec/hdmi2, official public overview, checked 2026-07-23. 最大96 Gbps、Ultra96の64/80/96 Gbps表示、次世代FRLを案内するが、現行engineが必要とするFEC・packet overhead込みの精密映像payload式はこの概要だけでは確定しない。
+- USB-IF, “USB4”, https://www.usb.org/usb4, official public overview, checked 2026-07-23. 最大80 Gbpsと複数data/display protocolの動的共有を案内するため、単一link mode定数ではなくtunneling/allocation modelが必要。
+- USB-IF, “USB4 Specification v2.0”, https://www.usb.org/document-library/usb4r-specification-v20, official specification landing page, checked 2026-07-23. 導入前に利用許諾、公開可能な根拠範囲、testable mappingをstandards ownerが確認する。
+- VESA, “DisplayPort 2.1b active cable specification”, https://vesa.org/press/vesa-to-update-displayport-2-1-with-new-active-cable-specification-for-up-to-3x-longer-dp80-cables/, official public announcement, checked 2026-07-23. DP80LLはcable length/physical capabilityの将来論点であり、現在の「長さ・信号品質は保証外」という境界を直ちに変更しない。
