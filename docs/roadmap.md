@@ -1,6 +1,8 @@
 # Delivery roadmap and far-goal proposal
 
-更新: 2026-07-23
+更新: 2026-07-25
+
+Checkpoint: 7月23日handoff以降にremote実装変更はなく、7月25日のfull local/live再検証もgreen。milestoneの完了率とturn幅は据え置き、M1.1の最初の実行順を一次資料→domain contract→UI→roundtrip→release evidenceとして明確化する。
 
 ## Estimation contract
 
@@ -50,6 +52,14 @@ M1.1のexit gate:
 4. Unknownを含むadapter chainが `EXACT_PASS` にならない。
 5. share/reportを復元しても方向・source・Unknownが失われない。
 6. frozen install、peer、typecheck、lint、coverage、build、local E2E、必要時live E2Eがgreen。
+
+M1.1 execution order:
+
+1. CTA/VESAの公開一次資料または公式calculatorから、許諾・再現入力・確認日を含む3〜6件のpreset候補を作る。根拠不十分な候補は採用せずidea/source recordへ戻す。
+2. `VideoTiming`とsource registerの最小contractを決め、既存 `#preflight=v1.` / portable reportの互換性判断を先に行う。
+3. pure domain registryとgolden/unit testsを追加し、その後にpreset selectorと方向別adapter input/output UIを接続する。
+4. reverse adapter `FAIL`、missing capability Unknown、share/report roundtrip、desktop/mobile E2Eを閉じる。
+5. ownerがsource採否と公開範囲を確認した後だけbeta artifactをbuild/deployし、local成功とlive成功を別々に記録する。
 
 ## Decision gates before later milestones
 

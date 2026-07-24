@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-23",
+  "updatedAt": "2026-07-25",
   "documents": [
     { "path": "docs/project-context.md", "role": "cockpit" },
     { "path": "docs/product-brief.md", "role": "product-scope" },

@@ -1,4 +1,4 @@
-# Supervisor AI handoff — 2026-07-23
+# Supervisor AI handoff — 2026-07-25
 
 ## Mission
 
@@ -22,18 +22,18 @@ Signal Chain Preflightは、PC・ゲーム機・dock・adapter・cable・display
 ## Executive status
 
 - Product: `v0.1.0-alpha.1` public alphaはrelease済み。単一映像streamの線形chain、DP、USB-C DP Alt Mode、HDMI TMDS、FRL unresolved、DSC/HDR/VRR、簡易USB PD、share hash、portable JSON reportを提供する。
-- Repository: public `YuShimoji/Signal-Chain-Preflight`、default branch `main`。2026-07-23に `git fetch --prune --tags` と `git pull --ff-only origin main` を実行し、報告作成前baselineはlocal/remoteとも `1e62e1a2e8ae1671716f6e52403c7187380a5a4d`。開始時worktreeはclean。
+- Repository: public `YuShimoji/Signal-Chain-Preflight`、default branch `main`。2026-07-25に `git fetch --prune --tags` と `git pull --ff-only origin main` を実行。7月23日handoff以降のremote追加commitはなく、報告作成前baselineはlocal/remoteとも `3483cb223da3899dce7fef126a6cd9d91aff16bd`、divergence `0 0`。開始時worktreeはclean。
 - Release artifact: tag `v0.1.0-alpha.1` とprereleaseは `d74b81741a15762e79ad08187fad9b736acdb323` のapp artifactを表す。後続 `main` はdocs-onlyのためPagesを再buildしていない。
 - Hosting: GitHub Pages workflow、public、HTTPS enforced。最新app deploy run `29677035609` はsuccess。
-- Live URL: `https://yushimoji.github.io/Signal-Chain-Preflight/` は2026-07-23にHTTP 200、app titleを確認。実URLdesktop/mobile E2Eは16件、終了code 0。
+- Live URL: `https://yushimoji.github.io/Signal-Chain-Preflight/` は2026-07-25にHTTP 200、app titleを確認。実URLdesktop/mobile E2Eは16件、終了code 0。
 - Development environment: Node `v24.13.0`、pnpm `11.9.0`。`package.json` のNode 24/pnpm 11契約とpackageManager pinに適合。
 - Recommended next slice: 出典付きtiming presetと方向付きadapter UIを一つのvertical sliceとして実装する。HDMI 2.2、USB4、MSTは混ぜない。
 
-## Verification evidence — 2026-07-23
+## Verification evidence — 2026-07-25
 
 | Gate | Result | Evidence |
 | --- | --- | --- |
-| Remote sync | pass | fetch/prune/tags、ff-only pull=`Already up to date`、baseline `origin/main...HEAD`=`0 0` |
+| Remote sync | pass | fetch/prune/tags、ff-only pull=`Already up to date`、baseline `3483cb2`、`origin/main...HEAD`=`0 0` |
 | Frozen dependency install | pass | `pnpm install --frozen-lockfile`=`Already up to date` |
 | Peer compatibility | pass | `pnpm peers check`=`No peer dependency issues found` |
 | Typecheck | pass | `pnpm typecheck`, exit 0 |
@@ -46,7 +46,7 @@ Signal Chain Preflightは、PC・ゲーム機・dock・adapter・cable・display
 
 Non-blocking observations:
 
-- pnpmは11.16.0のupdateを案内するが、repoは再現性のため11.9.0をpinしている。maintenance slice以外で上げない。
+- pnpmは11.17.0のupdateを案内するが、repoは再現性のため11.9.0をpinしている。security/compatibility根拠を伴うmaintenance slice以外で上げない。
 - Playwright/preview中に `NO_COLOR` が `FORCE_COLOR` により無視されるwarningが出る。test failure、product defect、判定品質の証拠ではない。
 - GitHub Pages APIの `status` はworkflow buildでnullだが、workflow success、HTTP 200、live E2Eを個別に確認している。
 
@@ -76,6 +76,8 @@ Roadmap source refresh:
 - Stable v1 trust program: `[██░░░░░░░░] 20%` — deterministic coreはあるが、evidence layer、schema evolution、実機校正、operations、stable support contractが未完了。
 
 割合は工数消化率ではなく、各milestoneのexit evidenceがどこまで存在するかの監修用目安。
+
+7月23日から25日の間にcode exit evidenceは増えていないため、public beta 30%、stable v1 20%を据え置く。再検証成功だけで未実装機能の進捗率を上げない。
 
 ## Verified boundaries and unverified claims
 
@@ -118,6 +120,18 @@ Not verified / must not be implied:
 4. UI追加が `src/domain/` をReact依存にしない。
 5. hash/report schema互換性を壊す場合はversion migrationまたは安全な拒否を決定し、decision logへ残す。
 6. docsだけでacceptせず、golden/unit/E2Eと公開後live evidenceで閉じる。
+
+## M1.1 execution packet
+
+監修役は次の順で一つの縦断blockを進める。
+
+1. `docs/standards-sources.md` のCTA/VESA資料を再確認し、source URL、確認日、再現入力、利用可能範囲を持つ3〜6件だけをpreset候補にする。
+2. `src/domain/schemas.ts` と `src/domain/types.ts` でpreset/source contractを設計し、現行share/report schemaを維持できるかを先に決める。破壊的ならversioning decisionを先に記録する。
+3. `src/domain/` にUI非依存registryとtestsを追加する。pixel clockを解像度/refreshから暗黙推定しない。
+4. `src/components/PreflightApp.tsx` にpreset selectorとadapterのinput/output transport editorを追加する。既存の全chain一括transport変更を方向別編集へ安全に分解する。
+5. reverse adapter、Unknown、share/report、desktop/mobileのregressionを閉じ、ownerによるsource採否後にのみbeta公開判断へ進む。
+
+最初の設計リスクは、`PRESET` と `presetId` がschemaに存在する一方、UIがmode選択と手入力pixel clockだけを提供しており、出典付きregistryとの整合が未実装なこと。adapter directionはdomain/golden caseに存在するが、UIはchain全体を同一transportへ更新するため、domain規則を変更せずUI編集面を拡張する。
 
 ## Stop / escalate conditions
 

@@ -50,14 +50,14 @@
 - Annotated tag / prerelease: `v0.1.0-alpha.1` / `https://github.com/YuShimoji/Signal-Chain-Preflight/releases/tag/v0.1.0-alpha.1`
 - GitHub公式action内部のNode.js 20 deprecation annotationは非失敗警告。公式公開workflowのmajor更新時に追従する
 
-## Sync handoff — 2026-07-23
+## Sync handoff — 2026-07-25
 
 - Purpose: 監修役AIまたは別端末が、chat履歴なしでremote同期状態、公開artifact、検証結果、残作業、最遠目標を復元できるようにする
 - Effect: 詳細な再開packetを `docs/supervisor-handoff.md` に分離し、このcockpitから一巡で到達できる
 - Requirements: repo-local `AGENTS.md`、本書、product/domain/standards/assumptions docsを先に読む。公開範囲、owner gate、secrets境界、Unknown伝播を広げたり弱めたりしない
-- State: `git fetch --prune --tags` と `git pull --ff-only origin main` を実行し、報告作成前baselineの `main` / `origin/main` は `1e62e1a2e8ae1671716f6e52403c7187380a5a4d` で一致。Node `v24.13.0`、pnpm `11.9.0`、frozen install、peer、typecheck、lint、unit/coverage、build、local/live E2Eを再検証済み。tag `v0.1.0-alpha.1` はapp/release commit `d74b81741a15762e79ad08187fad9b736acdb323` を指す
+- State: `git fetch --prune --tags` と `git pull --ff-only origin main` を実行し、7月23日handoff以降のremote追加commitはなし。報告作成前baselineの `main` / `origin/main` は `3483cb223da3899dce7fef126a6cd9d91aff16bd`、divergence `0 0`、開始時worktree clean。Node `v24.13.0`、pnpm `11.9.0`、frozen install、peer、typecheck 0/0/0、lint、unit 35/35、coverage、build、local/live E2E各16件を再検証済み。tag `v0.1.0-alpha.1` はapp/release commit `d74b81741a15762e79ad08187fad9b736acdb323` を指す
 - Owner: engineering。FRL/HDMI 2.2精密payload、実機妥当性、timing presetの一次資料採否はstandards/product owner確認を伴う
-- Next move: `docs/supervisor-handoff.md` のread orderとImmediate next sliceに従い、少数の出典付きtiming presetと方向付きadapter cardを同じ縦断sliceで実装する
+- Next move: `docs/supervisor-handoff.md` のread orderとM1.1 execution packetに従い、先にpreset一次資料とschemaを固定し、その境界上へ少数の出典付きtiming presetと方向付きadapter cardを同じ縦断sliceで実装する
 
 ## Residual work
 

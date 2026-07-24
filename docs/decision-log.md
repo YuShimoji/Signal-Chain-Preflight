@@ -16,3 +16,4 @@
 | 2026-07-21 | 再開用handoffはdocs-onlyでmainへ同期する | 別端末がchat履歴なしでrelease状態、残作業、次手順を復元できるようにする | handoff内容が実装変更や公開artifactに影響し始めた時 |
 | 2026-07-23 | public betaの最初の縦断sliceを「出典付きtiming preset + 方向付きadapter UI」に固定する | 現行engineの決定論と有向adapter契約を保ったまま、誤入力とUI上の最大gapを同時に減らせる。HDMI 2.2 / USB4 / MSTを混ぜると証拠・topology・allocationの論点が拡散する | preset一次資料が利用不能、またはadapter UIの前提となるdomain変更が必要と判明した時 |
 | 2026-07-23 | HDMI 2.2、USB4 80Gbps、DP 2.1bはroadmap監視対象に留め、既存判定定数へ直ちに追加しない | 公式公開概要は将来範囲を示すが、区間payload、tunneling allocation、物理長の扱いを現行の線形link modeへ安全に写像する証拠とmodelが不足する | 公開可能な一次仕様、schema案、golden case、owner承認が揃った時 |
+| 2026-07-25 | remote/code driftがないためM1.1のscopeとpnpm 11.9.0 pinを維持し、再検証結果だけをhandoffへ更新する | fetch/pull後も `3483cb2` で一致し全gateがgreen。依存更新通知や日付だけを理由に実装scope・規格定数・release artifactを動かす根拠はない | remote実装変更、peer不整合、security advisory、またはM1.1一次資料の採否が変わった時 |
